@@ -1,0 +1,1 @@
+"""Standalone sample service implementations."""

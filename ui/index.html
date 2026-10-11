@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#101926" />
+  <title>FieldCraft — Engineering Systems Lab</title>
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo-mark">F<span>.</span></span><span class="brand-name">FieldCraft <small>LAB / 001</small></span></div>
+    <nav aria-label="Main navigation"><a href="#overview">Overview</a><a href="#modules">Workflows</a><a href="#ai">AI systems</a><a href="/docs" target="_blank" rel="noopener">API docs ↗</a></nav>
+    <span class="topbadge"><span class="live-dot"></span> LOCAL / SYNTHETIC</span>
+  </header>
+  <main>
+    <section id="overview" class="hero">
+      <div class="eyebrow"><span class="line"></span> INDEPENDENT ENGINEERING PORTFOLIO</div>
+      <div class="hero-grid">
+        <div><h1>Real workflows.<br><em>Inspectable systems.</em></h1><p>Five connected product-engineering demonstrations. Test third-party-style synchronization, material import, measurement ingestion, document pipelines and context-aware answers.</p>
+          <div class="hero-actions"><a class="primary-btn" href="#modules">Explore live workflows <span>↗</span></a><a class="ghost-btn" href="#ai">Inspect AI trace →</a></div>
+        </div>
+        <div class="architecture" aria-label="Architecture diagram">
+          <div class="architecture-top"><span class="pulse-circle"></span> SYSTEM MODEL <span class="architecture-status">ACTIVE</span></div>
+          <div class="arch-row"><div class="arch-node">OPERATIONS<span>projects · costs · materials</span></div><div class="arch-small">01</div></div>
+          <div class="arch-connector"></div>
+          <div class="arch-row"><div class="arch-node accent">DATA + API LAYER<span>validated events · provenance</span></div><div class="arch-small">02</div></div>
+          <div class="arch-connector"></div>
+          <div class="arch-row"><div class="arch-node">AI + RETRIEVAL<span>context · grounding · traces</span></div><div class="arch-small">03</div></div>
+          <div class="arch-footer">5 CAPABILITIES <span>↔</span> 1 COHERENT DATA MODEL</div>
+        </div>
+      </div>
+      <div class="metrics" aria-label="Demo overview">
+        <div><span class="metric-value" id="metricProjects">—</span><span class="metric-label">PROJECTS</span></div>
+        <div><span class="metric-value" id="metricFinance">—</span><span class="metric-label">FINANCIAL EVENTS</span></div>
+        <div><span class="metric-value" id="metricDocuments">—</span><span class="metric-label">AI DOCUMENTS</span></div>
+        <div><span class="metric-value" id="metricMaterials">—</span><span class="metric-label">IMPORTED MATERIALS</span></div>
+        <div class="metrics-meta"><span>ENVIRONMENT</span><strong>Sandbox / Northstar</strong><small>All names and records are invented.</small></div>
+      </div>
+    </section>
+
+    <section id="modules" class="workflows">
+      <div class="section-header"><div><div class="eyebrow dark"><span class="line"></span> INTEGRATION ENGINEERING</div><h2>Operational systems</h2><p>Each workflow calls the running Python API and writes to the synthetic workspace.</p></div><div class="section-aside">SELECT A WORKFLOW AND RUN IT <span>↘</span></div></div>
+      <div class="module-grid">
+        <article class="module-card" id="accounting">
+          <div class="card-top"><span class="module-num">01 / FINANCE</span><span class="status-tag">Mock provider</span></div>
+          <div class="glyph glyph-blue">↹</div><h3>Ledger synchronization</h3><p>Push financial records with stable external identifiers, version checks and repeat-safe updates.</p>
+          <div class="tags"><span>idempotency</span><span>external mapping</span><span>concurrency</span></div>
+          <div class="card-actions"><button class="action-btn" id="syncBtn">Run accounting sync <span>↗</span></button><span class="action-note">Safe to run twice</span></div>
+          <div class="card-actions auxiliary-actions"><button class="secondary-btn" id="pullBtn">Import mock bill</button><button class="secondary-btn" id="conflictBtn">Simulate remote conflict</button></div>
+          <pre class="result" id="accountingResult" aria-live="polite">Run a sync to inspect record-level outcomes.</pre>
+        </article>
+        <article class="module-card" id="supplier">
+          <div class="card-top"><span class="module-num">02 / PROCUREMENT</span><span class="status-tag">Synthetic catalog</span></div>
+          <div class="glyph glyph-violet">▤</div><h3>Supplier material import</h3><p>Search branch-specific items, validate price and units, and import materials without duplicates.</p>
+          <div class="tags"><span>UOM mapping</span><span>validation</span><span>partial success</span></div>
+          <div class="controls compact"><label for="supplierQuery">Catalog search</label><div class="input-row"><input id="supplierQuery" type="text" value="" placeholder="Try shingle or flashing" /><button class="secondary-btn" id="searchSupplierBtn">Find</button></div></div>
+          <div class="supplier-list" id="supplierList"></div>
+          <div class="card-actions"><button class="action-btn" id="importSupplierBtn">Import checked materials <span>↗</span></button></div>
+          <pre class="result" id="supplierResult" aria-live="polite">Search, select and import items to test skip reasons.</pre>
+        </article>
+        <article class="module-card" id="measurement">
+          <div class="card-top"><span class="module-num">03 / MEASUREMENTS</span><span class="status-tag">Mock provider</span></div>
+          <div class="glyph glyph-orange">▱</div><h3>Measurement reports</h3><p>Request an external-style measurement, track order state and validate a completed report.</p>
+          <div class="tags"><span>state machine</span><span>report mapping</span><span>ingestion</span></div>
+          <div class="controls"><label for="measureProject">Project</label><select id="measureProject"><option value="prj-cedar">Cedar Residence</option><option value="prj-orion">Orion Warehouse</option></select></div>
+          <div class="card-actions"><button class="action-btn" id="requestMeasureBtn">Request synthetic report <span>↗</span></button><button class="secondary-btn" id="completeMeasureBtn" disabled>Ingest report</button></div>
+          <pre class="result" id="measurementResult" aria-live="polite">Create an order, then ingest measurements.</pre>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-light" id="ai">
+      <div class="section-header"><div><div class="eyebrow dark"><span class="line"></span> AI + DATA ENGINEERING</div><h2>From raw records to grounded answers.</h2><p>A readable execution trail, not a black-box chatbot.</p></div><div class="section-aside">NO LIVE PROVIDER KEY REQUIRED</div></div>
+      <div class="ai-grid">
+        <article class="panel pipeline-panel" id="pipeline">
+          <div class="panel-top"><span>04 / DOCUMENT PIPELINE</span><span class="pill">ETL</span></div><h3>Relational data → query-ready documents</h3><p>Build versioned project documents from structured records, preserving source references and avoiding duplicate refreshes.</p>
+          <div class="flow-steps"><div><span>1</span>SQLite source</div><span class="flow-arrow">→</span><div><span>2</span>Transform</div><span class="flow-arrow">→</span><div><span>3</span>Evidence store</div></div>
+          <button class="action-btn dark-btn" id="refreshPipelineBtn">Refresh documents <span>↗</span></button><pre class="result light-result" id="pipelineResult" aria-live="polite">Refresh once, then again to verify idempotent versions.</pre>
+        </article>
+        <article class="panel assistant-panel" id="assistant">
+          <div class="panel-top"><span>05 / CONTEXT PILOT</span><span class="pill dark-pill" id="llmMode">OFFLINE EVIDENCE MODE</span></div><h3>Project-aware AI assistant</h3><p>Query routing, scoped retrieval, abstention and a visible execution trace. Model generation is optional, never simulated.</p>
+          <div class="controls"><label for="activeProject">Active project</label><select id="activeProject"><option value="prj-cedar">Cedar Residence</option><option value="prj-orion">Orion Warehouse</option><option value="">No project selected</option></select></div>
+          <div class="sample-questions"><button data-question="Why did Cedar Residence exceed material cost?">Cost variance ↗</button><button data-question="Show the supplier materials for this project">Available materials ↗</button><button data-question="What do you know about an unrelated project?">Insufficient evidence ↗</button></div>
+          <form id="askForm" class="question-form"><label for="question">Ask a question</label><div class="input-row"><input id="question" type="text" required value="Why did Cedar Residence exceed material cost?" maxlength="1000" /><button type="submit" class="action-btn">Ask →</button></div></form>
+          <div class="answer-container" id="assistantAnswer" aria-live="polite">Answers will appear here, with evidence and trace steps.</div>
+          <div class="trace-container"><span>EXECUTION TRACE</span><ol id="traceList"><li>Awaiting query</li></ol></div>
+        </article>
+      </div>
+      <article class="memory-panel" id="memory">
+        <div class="memory-copy"><div class="panel-top"><span>OPTIONAL / MEMORY EXPERIMENT</span><span class="pill">PROVENANCE-AWARE</span></div><h3>Remember. Update. Recall. Forget.</h3><p>A small companion demo for explicit-user facts. Updates preserve valid-time history; forgetting deletes every stored version and tracked derivative.</p><div class="tags"><span>trusted writes only</span><span>time-aware</span><span>logical erase</span></div></div>
+        <div class="memory-form"><label for="memoryTopic">Memory topic</label><select id="memoryTopic"><option value="diet">Diet</option><option value="home_city">Home city</option><option value="manager">Manager</option><option value="food_allergy">Food allergy</option><option value="spice_preference">Spice preference</option><option value="workplace">Workplace</option></select><label for="memoryValue">Fact stated directly by the user</label><input id="memoryValue" value="vegetarian" maxlength="500" /><div class="memory-buttons"><button id="writeMemoryBtn" class="action-btn">Remember</button><button id="recallMemoryBtn" class="secondary-btn">Recall</button><button id="forgetMemoryBtn" class="danger-btn">Forget</button></div><pre class="result light-result" id="memoryResult" aria-live="polite">Use synthetic facts only. Nothing external is trusted.</pre></div>
+      </article>
+    </section>
+    <section class="footer-note"><div><strong>Built to be inspected.</strong><p>Original portfolio implementation. Every workspace, company, cost, user and measurement is synthetic. External integrations are mock adapters; the local demo is not intended for production.</p></div><a href="/docs" target="_blank" rel="noopener">Inspect API reference ↗</a></section>
+  </main>
+  <footer><span>FIELDCRAFT / ENGINEERING LAB</span><span>INDEPENDENT PORTFOLIO EXAMPLE · NO REAL USER DATA</span><span>01—05 / SYSTEM WORKFLOWS</span></footer>
+  <script src="/assets/app.js" defer></script>
+</body>
+</html>
